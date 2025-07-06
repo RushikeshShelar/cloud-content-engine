@@ -1,7 +1,5 @@
-Day 27: Testing Twitter Post
+Caption Temp CaprioN
 
-what i did:
-Testingggg
+Test Psot 
 
-
-Up next: Dockerize 
+AWS DEVOPS
