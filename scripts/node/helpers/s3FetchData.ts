@@ -1,4 +1,5 @@
 import {
+    S3Client,
     ListObjectsV2Command,
     GetObjectCommand,
 } from "@aws-sdk/client-s3";
@@ -7,15 +8,26 @@ import { join, dirname } from "path";
 import { pipeline } from "stream";
 import { promisify } from "util";
 
-import { s3Client } from "../utils/client"; // Adjust the import path as necessary
+import dotenv from "dotenv";
+if (process.env.NODE_ENV !== "production") {
+    dotenv.config({ path: join(__dirname, "../../../.env") });
+}
 
 const pipe = promisify(pipeline);
+
+const s3Client = new S3Client({
+    region: process.env.AWS_REGION || "ap-south-1",
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || ""
+    }
+});
 
 // AWS S3 client config
 export async function downloadFolderFromS3(
     bucketName: string,
     prefix: string, // Folder path in S3, like 'content/images/'
-    localBasePath: string = "./tmp"
+    localBasePath: string
 ) {
     try {
         const listCommand = new ListObjectsV2Command({

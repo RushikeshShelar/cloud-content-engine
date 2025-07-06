@@ -1,11 +1,7 @@
 import { XClient } from "../utils/client";
+import { XPostPayload } from "../utils/types";
 
-interface TweetPayload {
-    caption: string;
-    mediaIds?: string[];
-}
-
-export async function postTweet(payload: TweetPayload) {
+export async function postTweet(payload: XPostPayload) {
 
     try {
         const { caption, mediaIds } = payload;

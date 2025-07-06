@@ -1,5 +1,3 @@
-// day-number.js
-
 export function getChallengeDay(startDateStr: string) {
     const startDate = new Date(startDateStr); // e.g., '2025-06-10'
     const today = new Date();

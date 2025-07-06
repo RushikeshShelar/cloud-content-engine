@@ -3,25 +3,23 @@ import path from 'path';
 import { XClient } from '../utils/client';
 
 
-export async function getTweetPayload(localPath: string): Promise<any> {
+export async function getTweetPayload(contentDir: string): Promise<{ caption: string; mediaIds: string[] }> {
     try {
+        const imagePath = path.join(contentDir, 'canva.png');
 
-        const contentDir = path.resolve(__dirname, localPath);
+        const captionPath = path.join(contentDir, 'captions', 'twitter.txt');
 
-        const imagePath = `${contentDir}/canva.png`;
+        const caption = fs.readFileSync(captionPath, 'utf-8').trim();
 
-        const caption = fs.readFileSync(`${contentDir}/caption.txt`, 'utf-8').trim();
-
-        const mediaIds = await Promise.all([
-            XClient.v1.uploadMedia(imagePath)
-        ]);
+        const mediaId = await XClient.v1.uploadMedia(imagePath);
 
         return {
             caption,
-            mediaIds
-        }
+            mediaIds: [mediaId]
+        };
 
     } catch (error) {
         console.log(['GET TWITTER PAYLOAD ERROR'], error);
+        return { caption: '', mediaIds: [] };
     }
 }

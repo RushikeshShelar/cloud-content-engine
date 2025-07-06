@@ -1,6 +1,4 @@
 import express from "express";
-import dotenv from "dotenv";
-
 
 import postRoutes from "./routes/post";
 
@@ -9,10 +7,12 @@ const app = express();
 app.use(express.json());
 
 // Routes
-app.use("/api/post", postRoutes);
+app.use("/api/tweet", postRoutes);
 
 app.get("/", (req, res) => {
-    res.send("Welcome to the X API!");
+    res.json({
+        message: "Welcome to the X API",
+    });
 });
 
 const PORT = process.env.PORT || 3000;
