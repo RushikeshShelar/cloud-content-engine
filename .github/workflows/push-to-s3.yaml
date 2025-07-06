@@ -13,7 +13,7 @@ jobs:
       AWS_REGION: 'ap-south-1'
       AWS_S3_BUCKET_NAME: '30-days-of-devops'
 
-    step:
+    steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
