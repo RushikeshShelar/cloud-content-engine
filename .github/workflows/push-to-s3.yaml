@@ -26,4 +26,4 @@ jobs:
 
       - name: Sync Content to S3
         run: |
-          aws s3 sync ./content/ s3://${S3_BUCKET_NAME}/content/ --delete
+          aws s3 sync ./content/ s3://${AWS_S3_BUCKET_NAME}/content/ --delete
