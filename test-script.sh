@@ -26,7 +26,7 @@ docker run --rm \
   cloud-test:local
 
 # 4. Wait for container to boot
-until curl --silent --fail http://localhost:3000/health; do
+until curl --silent --fail http://localhost:3000/; do
     echo "Waiting for container..."
     sleep 1
 done
