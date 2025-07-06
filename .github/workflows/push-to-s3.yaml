@@ -2,7 +2,7 @@ name: Upload Content to S3
 
 on:
   push:
-    path:
+    paths:
       - 'content/**'
 
 jobs:
