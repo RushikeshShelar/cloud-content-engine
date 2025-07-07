@@ -33,7 +33,7 @@ router.post('/', async (req: express.Request, res: express.Response) => {
 
         res.status(200).json({
             success: true,
-            data: tweet
+            massage: 'Tweet posted successfully',
         });
         return
 
