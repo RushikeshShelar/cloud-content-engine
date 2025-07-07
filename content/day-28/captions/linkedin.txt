@@ -1,0 +1,17 @@
+🚀 Day 28 of #30DaysOfDevOps — LinkedIn Microservice Ready!  
+Built, dockerized, and tested the LinkedIn posting service as part of my content automation stack:
+
+✅ What I did:
+• Created a LinkedIn Developer Project  
+• Built the posting microservice  
+• Dockerized and ran successful test posts  
+• Set up a local script to cross-post to LinkedIn and X  
+
+❌ Still working on multiple image support
+
+
+❗ Key Insight: LinkedIn’s API doesn’t support personal profiles — you’ll need a LinkedIn Page. Official SDK is outdated, so custom HTTP requests or wrappers are more reliable.
+
+⏭️ Up Next: Instagram automation using Zapier or Meta Graph API
+
+#DevOps #LinkedInAPI #AutomationTools #CI_CD #APIAutomation #NodeJS #Docker #AWS #rushikeshtech #AutoPosterDev

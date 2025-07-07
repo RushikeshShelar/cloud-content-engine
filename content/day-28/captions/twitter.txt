@@ -1,0 +1,12 @@
+🛠️ Day 28 of #30DaysOfDevOps  
+Today I built the LinkedIn microservice:
+
+✅ Setup Dev API  
+✅ Dockerized the app  
+✅ Local script posts to X & LinkedIn  
+❌ Still working on multiple image support
+
+💡 LinkedIn API only supports Pages.
+
+Next: Insta/Zapier 🔄  
+#DevOps #API
