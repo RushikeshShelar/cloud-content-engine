@@ -1,0 +1,23 @@
+📸 Instagram Caption (Detailed & Relatable Style):
+📅 Day 30/30 – Built the Instagram API Microservice 🚀
+
+Today was all about bringing Instagram automation to life!
+After days of exploring Meta’s ecosystem and surviving the chaos of access tokens, permissions, and sandbox limits…
+I finally coded and containerized my Instagram Microservice using the Meta Graph API.
+
+🔧 What I did:
+
+🧱 Built a custom HTTP wrapper around Instagram’s Graph API
+🐳 Dockerized the entire service
+🔁 Integrated it with my Twitter and LinkedIn microservices for multi-platform automation
+🔐 Handled token-based access and private image uploads
+
+✨ Key Takeaway:
+Not gonna lie, this was hard.
+Instagram’s API isn’t developer-friendly unless you really know what you’re doing. The docs helped — but only when I knew exactly what to look for.
+Also… I’ll admit, the code is not beautiful 🫣, but "if it works, don’t touch it" — right? 😅
+
+📌 Up Next:
+Building parallel automated workflows to post on all platforms (X, LinkedIn, Instagram) from a single content push!
+
+#30DaysOfDevOps #DevOpsJourney #InstagramAPI #MetaGraphAPI #Docker #Automation #APIs #DeveloperLife #BuildInPublic

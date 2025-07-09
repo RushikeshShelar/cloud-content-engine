@@ -1,0 +1,20 @@
+Day 30/30 – #30DaysOfDevOps | Application Phase: Instagram API Microservice 🔄
+
+After deep-diving into Meta’s ecosystem over the past few days, I finally built and containerized the Instagram automation service using the Meta Graph API.
+
+💻 What I accomplished:
+• Developed a custom HTTP wrapper around Meta’s Graph API
+• Built a fully Dockerized microservice for Instagram content posting
+• Integrated the Instagram microservice with my existing Twitter and LinkedIn services
+• Handled token-based access and media permissions
+• Aligned the posting logic to follow platform-specific constraints
+
+🧠 Key Learning:
+Meta's Graph API is powerful, but it comes with significant friction — permission scopes, sandbox limits, business account restrictions, and non-intuitive docs.
+It took a solid mix of documentation, trial/error, and API explorers to get things up and running.
+Not my proudest codebase 😅, but it works — and that’s progress.
+
+🎯 Next Step:
+Automating parallel workflows for synchronized posting across all three platforms, Instagram, X, and LinkedIn — with a single push 🔁
+
+#DevOps #DevOpsChallenge #MetaGraphAPI #InstagramAPI #Microservices #Docker #CloudEngineering #APIIntegration #Automation #DeveloperJourney #BuildInPublic
