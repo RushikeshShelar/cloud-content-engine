@@ -1,0 +1,22 @@
+{
+  "name": "instagram",
+  "version": "1.0.0",
+  "description": "Meta Graph Api to Post on Instagram",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc -b && node dist/index.js",
+    "build": "tsc -b",
+    "start": "node dist/index.js"
+  },
+  "author": "Rushikesh Shelar",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.842.0",
+    "axios": "^1.10.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "typescript": "^5.8.3"
+  }
+}
