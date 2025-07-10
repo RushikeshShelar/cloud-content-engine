@@ -1,0 +1,7 @@
+✅ Day 30 of #30DaysOfDevOps
+Built a complete auto-posting workflow!
+Push to GitHub → Sync to S3 → EC2 spins up → Containers post on X, LinkedIn, Insta → Infra shuts down.
+
+Next: Refactor for scale.
+CI + CD + Content = 💯
+#DevOps #Automation #GitHubActions #AWS

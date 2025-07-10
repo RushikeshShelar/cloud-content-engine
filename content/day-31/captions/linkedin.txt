@@ -1,0 +1,23 @@
+Day 30 – Final Day of #30DaysOfDevOps 🚀
+
+Over the past month, I took on the challenge to learn and apply DevOps end-to-end.
+Today, I’m proud to share that I’ve built a fully automated social media workflow that posts daily to X, LinkedIn, and Instagram.
+
+How it works:
+→ Push content to /content in GitHub
+→ Syncs to S3
+→ At 10 AM, EC2 spins up
+→ Fetches content → spins Docker containers
+→ Each container handles platform-specific posting
+→ Infra shuts down post-execution
+
+This journey taught me more than just tools — it taught me systems thinking, automation principles, and how to turn knowledge into real workflows.
+
+✅ What’s Next?
+Refactor this into a production-grade system with scale, logging, alerting & more.
+
+📌 30 Days ✅
+🛠 Continuous Learning & Continuous Application begins now.
+
+#DevOps #AWS #Docker #GitHubActions #Automation #CloudComputing #DevOpsJourney #DeveloperTools #InfrastructureAsCode #buildinpublic #LinkedInDevelopers #CI_CD #30DaysChallenge
+
