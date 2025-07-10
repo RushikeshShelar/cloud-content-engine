@@ -1,0 +1,15 @@
+services:
+  api-service:
+    build: 
+      context: .
+    container_name: linkedin-service
+    ports:
+      - "3001:3000"
+    env_file: .env.linkedin.local
+    volumes:
+      - ../../../tmp/shared:/app/content
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

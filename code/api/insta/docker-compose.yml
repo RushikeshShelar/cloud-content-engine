@@ -1,0 +1,15 @@
+services: 
+  api-service:
+    build: 
+      context: .
+    container_name: insta-service
+    ports: 
+      - "3000:3000"
+    env_file: .env.insta.local
+    volumes:
+      - ../../../tmp/shared:/app/content
+    healthcheck:
+     test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+     interval: 5s
+     timeout: 5s
+     retries: 5
