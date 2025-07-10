@@ -1,0 +1,51 @@
+services:
+  insta:
+    build:
+      context: ./code/api/insta    
+    container_name: insta
+    env_file:
+      - .env
+    volumes:
+      - ./tmp/shared:/app/content
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+  
+  linkedin:
+    build: 
+      context: ./code/api/linkedin
+    container_name: linkedin
+    env_file: 
+      - .env
+    volumes:
+      - ./tmp/shared:/app/content
+    ports:
+      - "3001:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  twitter:
+    build: 
+      context: ./code/api/x
+    container_name: twitter
+    env_file: 
+      - .env
+    volumes:
+      - ./tmp/shared:/app/content
+    ports:
+      - "3002:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
