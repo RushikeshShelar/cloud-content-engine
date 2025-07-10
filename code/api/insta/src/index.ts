@@ -9,6 +9,11 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+// Health Check
+app.get('/health', (_, res) => {
+    res.sendStatus(200)
+});
+
 // Routes
 app.use("/api/post", postRoutes);
 
