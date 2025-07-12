@@ -1,8 +1,8 @@
 import express from "express";
-
-import postRoutes from "./routes/post";
+import tweetRoutes from "./routes/tweet";
 
 const app = express();
+
 // Middlewares
 app.use(express.json());
 
@@ -12,9 +12,10 @@ app.get('/health', (_, res) => {
 });
 
 // Routes
-app.use("/api/tweet", postRoutes);
+app.use("/api/tweet", tweetRoutes);
 
-app.get("/", (req, res) => {
+// Default Route
+app.get("/", (_, res) => {
     res.json({
         message: "Welcome to the X API",
     });

@@ -1,25 +1,86 @@
 import fs from 'fs';
 import path from 'path';
-import { XClient } from '../utils/client';
+
+import { PostTweetPayload } from '../utils/types';
+import { getCaption } from './getCaption';
+import { uploadMediaToX } from '../services/uploadMediaToX';
 
 
-export async function getTweetPayload(contentDir: string): Promise<{ caption: string; mediaIds: string[] }> {
+/**
+ * 
+ * @param localContentDir - The local directory containing content files.
+ * @returns {Promise<XTweetPayload>} - A promise that resolves to the tweet payload containing caption and media IDs.
+ * @throws {Error} - If the content directory or required files are not found.
+ * @description This function retrieves the tweet payload by reading the caption from a file and uploading media
+ */
+export async function getTweetPayload(localContentDir: string): Promise<PostTweetPayload | undefined> {
     try {
-        const imagePath = path.join(contentDir, 'canva.png');
+        if (!fs.existsSync(localContentDir)) {
+            throw new Error(`Content directory not found: ${localContentDir}`);
+        }
 
-        const captionPath = path.join(contentDir, 'captions', 'twitter.txt');
+        const captionFilePath = path.join(localContentDir, 'captions', 'twitter.txt');
 
-        const caption = fs.readFileSync(captionPath, 'utf-8').trim();
+        // Check if caption file exists
+        if (!fs.existsSync(captionFilePath)) {
+            throw new Error(`Caption file not found: ${captionFilePath}`);
+        }
 
-        const mediaId = await XClient.v1.uploadMedia(imagePath);
+        // Retrieve the caption
+        const caption = await getCaption(captionFilePath);
 
+        const mediaIds: string[] = [];
+
+        // Upload Gauranteed Canva Image
+        const canvaImagePath = path.join(localContentDir, 'canva.png');
+
+        if (!fs.existsSync(canvaImagePath)) {
+            throw new Error(`Canva image not found: ${canvaImagePath}`);
+        }
+        const canvaMediaId = await uploadMediaToX(canvaImagePath);
+
+        if (!canvaMediaId) {
+            throw new Error(`Failed to upload Canva image: ${canvaImagePath}`);
+        }
+        // Add Canva media ID to the list
+        mediaIds.push(canvaMediaId);
+
+        // Upload Images from the images directory
+        const imagesDir = path.join(localContentDir, 'images');
+
+        // Check if images directory exists
+        if (!fs.existsSync(imagesDir)) {
+            throw new Error(`Images directory not found: ${imagesDir}`);
+        }
+
+        // Get all image files in the images directory
+        const imageFiles = fs.readdirSync(imagesDir).filter(file => {
+            const ext = path.extname(file).toLowerCase();
+            return ext === '.jpg' || ext === '.jpeg' || ext === '.png' || ext === '.gif';
+        });
+
+        if (imageFiles.length > 0) {
+            // Upload Images
+            imageFiles.sort(); // Sort to ensure consistent order
+            for (const img of imageFiles) {
+                const imgFilePath = path.join(imagesDir, img);
+                const mediaId = await uploadMediaToX(imgFilePath);
+                if (mediaId) {
+                    mediaIds.push(mediaId);
+                } else {
+                    console.warn(`Failed to upload media: ${imgFilePath}`);
+                }
+            }
+        }
+
+        // Return the tweet payload
         return {
-            caption,
-            mediaIds: [mediaId]
+            text: caption,
+            media: {
+                media_ids: mediaIds
+            }
         };
-
     } catch (error) {
-        console.log(['GET TWITTER PAYLOAD ERROR'], error);
-        return { caption: '', mediaIds: [] };
+        console.error("Error getting tweet payload:", error);
     }
 }
