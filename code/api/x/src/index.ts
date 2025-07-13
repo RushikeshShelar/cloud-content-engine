@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 // Health Check
-app.get('/health', (_, res) => {
+app.get('/api/health', (_, res) => {
     res.sendStatus(200);
 });
 
@@ -15,7 +15,7 @@ app.get('/health', (_, res) => {
 app.use("/api/tweet", tweetRoutes);
 
 // Default Route
-app.get("/", (_, res) => {
+app.get("/api/hello", (_, res) => {
     res.json({
         message: "Welcome to the X API",
     });

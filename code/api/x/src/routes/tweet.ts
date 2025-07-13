@@ -19,11 +19,12 @@ const router = express.Router();
  */
 router.post('/', async (req: express.Request, res: express.Response) => {
     try {
-        const { topic } = req.body;
-        if (!topic) {
-            res.status(400).json({ error: "Topic is required" });
+        if (!req.body || !req.body.topic) {
+            res.status(400).json({ error: "Request body with 'topic' is required" });
             return;
         }
+        // Extract topic from request body
+        const { topic } = req.body;
         // Fetch the content path from AWS SSM Parameter Store
         const s3FolderPath = await getContentPath(topic);
         if (!s3FolderPath) {
@@ -32,7 +33,7 @@ router.post('/', async (req: express.Request, res: express.Response) => {
         }
 
         // Define the local content directory
-        const localContentDir = `/home/rushi/app/content`;
+        const localContentDir = `/app/content`;
 
         // Fetch Content from AWS S3
         await fetchContentFolder(AWS_BUCKET_NAME, s3FolderPath, localContentDir);
