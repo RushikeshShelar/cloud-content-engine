@@ -7,11 +7,10 @@ import { uploadMediaToX } from '../services/uploadMediaToX';
 
 
 /**
- * 
+ * This function retrieves the tweet payload by reading the caption from a file and uploading media
  * @param localContentDir - The local directory containing content files.
  * @returns {Promise<XTweetPayload>} - A promise that resolves to the tweet payload containing caption and media IDs.
  * @throws {Error} - If the content directory or required files are not found.
- * @description This function retrieves the tweet payload by reading the caption from a file and uploading media
  */
 export async function getTweetPayload(localContentDir: string): Promise<PostTweetPayload | undefined> {
     try {

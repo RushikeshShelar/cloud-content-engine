@@ -44,8 +44,8 @@ const XClient = userClient.readWrite;
 
 /**
  * AWS S3 Bucket Client 
+ *  This client is used to interact with AWS S3 for media uploads and other storage operations.
  * @returns {S3Client} an Instance of AWS S3 Client with Authenicated Secrets
- * @description This client is used to interact with AWS S3 for media uploads and other storage operations.
  */
 const s3Client = new S3Client({
     region: AWS_REGION,
@@ -58,8 +58,8 @@ const s3Client = new S3Client({
 
 /**
  * AWS SSM Client
+ * This client is used to interact with AWS SSM for fetching configuration parameters.
  * @returns {SSMClient} an Instance of AWS SSM Client with Authenicated Secrets
- * @description This client is used to interact with AWS SSM for fetching configuration parameters.
  */
 const ssmClient = new SSMClient({
     region: AWS_REGION

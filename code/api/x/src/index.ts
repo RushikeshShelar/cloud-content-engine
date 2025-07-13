@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Health Check
 app.get('/health', (_, res) => {
-    res.sendStatus(200)
+    res.sendStatus(200);
 });
 
 // Routes

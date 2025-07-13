@@ -10,10 +10,11 @@ export interface PostTweetPayload {
     };
 }
 
-/** * Represents the response from posting a tweet.
+/** 
+ * Represents the response from posting a tweet.
+ * This interface defines the structure of the response returned by the postTweet function.
  * @property {string} id - The ID of the posted tweet.
  * @property {string} text - The text content of the posted tweet.
- * @description This interface defines the structure of the response returned by the postTweet function.
  */
 export interface PostTweetResponse {
     id: string;
